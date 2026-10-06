@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 import { StorageService } from '../../shared/services/storage.service';
 
 @Component({
+  standalone: false,
   selector: 'app-home',
   templateUrl: './home.component.html'
 })

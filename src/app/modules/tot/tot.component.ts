@@ -8,6 +8,7 @@ import { SettingsService } from '../../shared/services/riyada-setting.service';
 import { NotificationService } from '../../shared/services/notification.service';
 
 @Component({
+  standalone: false,
   selector: 'app-tot',
   templateUrl: './tot.component.html',
 })

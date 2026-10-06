@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArticlesService } from '../../shared/services/articles.services';
 
 @Component({
+  standalone: false,
   selector: 'app-articles',
   templateUrl: './articles.component.html',
   styleUrls: ['./articles.component.scss'],

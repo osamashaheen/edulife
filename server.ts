@@ -1,5 +1,5 @@
 import { APP_BASE_HREF } from '@angular/common';
-import { CommonEngine } from '@angular/ssr';
+import { CommonEngine, isMainModule } from '@angular/ssr/node';
 import express from 'express';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
@@ -12,7 +12,8 @@ export function app(): express.Express {
   const browserDistFolder = resolve(serverDistFolder, '../browser');
   const indexHtml = join(serverDistFolder, 'index.server.html');
 
-  const commonEngine = new CommonEngine();
+  // NG_ALLOWED_HOSTS overrides these local defaults for production domains.
+  const commonEngine = new CommonEngine({ allowedHosts: ['localhost', '127.0.0.1'] });
 
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
@@ -53,4 +54,6 @@ function run(): void {
   });
 }
 
-run();
+if (isMainModule(import.meta.url)) {
+  run();
+}

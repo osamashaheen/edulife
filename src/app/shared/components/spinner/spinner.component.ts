@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SpinnerService } from '../../services/spinner.service';
 
 @Component({
+  standalone: false,
   selector: 'app-spinner',
   templateUrl: './spinner.component.html',
   styleUrls: ['./spinner.component.scss'],
