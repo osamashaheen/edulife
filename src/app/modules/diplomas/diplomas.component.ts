@@ -5,6 +5,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 @Component({
+  standalone: false,
   selector: 'app-diplomas',
   templateUrl: './diplomas.component.html',
   styleUrls: ['./diplomas.component.scss']

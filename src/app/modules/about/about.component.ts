@@ -3,6 +3,7 @@ import { SettingsService } from '../../shared/services/riyada-setting.service';
 import { environment } from '../../../environments/environment';
 
 @Component({
+  standalone: false,
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'

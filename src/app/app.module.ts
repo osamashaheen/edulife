@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { ToastrModule } from 'ngx-toastr';
 import { ErrorInterceptor } from './shared/services/error.interceptor';
@@ -22,7 +22,6 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -40,6 +39,7 @@ export function createTranslateLoader(http: HttpClient) {
     provideClientHydration(),
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     LanguageService,
+    provideHttpClient(withInterceptorsFromDi()),
   ],
   bootstrap: [AppComponent],
 })
